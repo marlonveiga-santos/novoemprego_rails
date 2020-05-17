@@ -1,0 +1,22 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      applicant: Candidato
+    attributes:
+      applicant:
+        email: Email
+        password: Senha
+        password_confirmation: Confirmação de senha
+  applicants:
+    registrations:
+      new:
+        sign_up: Cadastre-se
+    sessions:
+      new:
+        log_in: Entrar
+    shared:
+      links:
+        sign_up: Cadastre-se
+        log_in: Entrar
+        forgot_password: Esqueceu sua senha ?

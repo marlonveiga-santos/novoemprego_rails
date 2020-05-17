@@ -14,11 +14,16 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <button class="nav-link btn btn-outline-success m-2 p-2" href="#">Empresa</button>
+        <%= button_to 'Empresa', new_applicant_session_path, {class: 'nav-link btn btn-outline-success m-2 p-2'} %>
       </li>
       <li class="nav-item">
-        <button class="nav-link btn btn-outline-primary m-2 p-2" href="#">Candidato</button>
+        <%= button_to 'Candidato', new_applicant_session_path, {class: 'nav-link btn btn-outline-primary m-2 p-2'} %>
       </li>
+      <% if applicant_signed_in? %>
+      <li class="nav-item">
+          <%= link_to 'Sair', destroy_applicant_session_path, method: :delete %>
+      </li>
+      <% end %>
     </ul>
   </div>
 </nav>
