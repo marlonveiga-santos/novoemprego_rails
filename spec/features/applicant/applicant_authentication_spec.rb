@@ -75,7 +75,7 @@ feature 'Applicant authentication' do
       expect(page).not_to have_link('Entrar')
     end
 
-    scenario 'and email is already used' do
+    scenario 'but email is already used' do
       applicant = create(:applicant)
       visit root_path
       click_on 'Candidato'
@@ -93,7 +93,7 @@ feature 'Applicant authentication' do
       expect(page).not_to have_link('Sair')
     end
 
-    scenario 'and password didn\'t match the requirements' do
+    scenario 'but password didn\'t match the requirements' do
       visit root_path
       click_on 'Candidato'
       click_on 'Cadastre-se'
