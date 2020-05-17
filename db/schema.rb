@@ -10,7 +10,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_16_180848) do
+ActiveRecord::Schema.define(version: 2020_05_17_174803) do
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "applicant_educational_details", force: :cascade do |t|
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "educational_level"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "applicant_experiences", force: :cascade do |t|
+    t.string "company_name"
+    t.string "job_activity"
+    t.date "start_date"
+    t.date "end_date"
+    t.decimal "salary"
+    t.string "job_description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "applicant_profiles", force: :cascade do |t|
+    t.string "name"
+    t.string "preferred_name"
+    t.date "birth_date"
+    t.integer "country_state"
+    t.integer "education_id", null: false
+    t.string "description"
+    t.integer "experience_id", null: false
+    t.string "avatar"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["education_id"], name: "index_applicant_profiles_on_education_id"
+    t.index ["experience_id"], name: "index_applicant_profiles_on_experience_id"
+  end
 
   create_table "applicants", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,4 +80,7 @@ ActiveRecord::Schema.define(version: 2020_05_16_180848) do
     t.index ["reset_password_token"], name: "index_applicants_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "applicant_profiles", "educations"
+  add_foreign_key "applicant_profiles", "experiences"
 end

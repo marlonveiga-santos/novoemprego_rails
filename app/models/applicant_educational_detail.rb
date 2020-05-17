@@ -1,0 +1,2 @@
+class ApplicantEducationalDetail < ApplicationRecord
+end
