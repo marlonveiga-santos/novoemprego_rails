@@ -6,3 +6,6 @@
     </div>
   </div>
 </div>
+<% if applicant_signed_in? %>
+<h1><%= current_applicant.inspect %></h1>
+<%end%>

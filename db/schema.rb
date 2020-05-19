@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_17_174803) do
+ActiveRecord::Schema.define(version: 2020_05_19_143558) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_05_17_174803) do
     t.string "avatar"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "applicant_id"
     t.index ["education_id"], name: "index_applicant_profiles_on_education_id"
     t.index ["experience_id"], name: "index_applicant_profiles_on_experience_id"
   end
@@ -76,6 +77,8 @@ ActiveRecord::Schema.define(version: 2020_05_17_174803) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "applicant_id", null: false
+    t.index ["applicant_id"], name: "index_applicants_on_applicant_id"
     t.index ["email"], name: "index_applicants_on_email", unique: true
     t.index ["reset_password_token"], name: "index_applicants_on_reset_password_token", unique: true
   end
@@ -83,4 +86,5 @@ ActiveRecord::Schema.define(version: 2020_05_17_174803) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "applicant_profiles", "educations"
   add_foreign_key "applicant_profiles", "experiences"
+  add_foreign_key "applicants", "applicants"
 end

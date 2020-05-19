@@ -3,4 +3,6 @@ class Applicant < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         has_one :applicant_profile, dependent: :destroy, autosave: true
+         accepts_nested_attributes_for :applicant_profile
 end
