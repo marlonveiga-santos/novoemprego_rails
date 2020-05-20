@@ -8,13 +8,15 @@ pt-BR:
         email: Email
         password: Senha
         password_confirmation: Confirmação de senha
+        remember_me: Lembrar-me
   applicants:
-    registrations:
-      new:
-        sign_up: Cadastre-se
     sessions:
       new:
         log_in: Entrar
+    registrations:
+      new:
+        sign_up: Cadastre-se
+        name: Nome
     shared:
       links:
         sign_up: Cadastre-se

@@ -14,7 +14,7 @@ feature 'Applicant authentication' do
         click_on 'Entrar'
       end
 
-      expect(page).to have_content('Login efetuado com sucesso!')
+      expect(page).to have_content('Login efetuado com sucesso')
       expect(page).not_to have_link('Entrar')
       expect(page).to have_link('Sair')
       expect(current_path).to eq(root_path)
