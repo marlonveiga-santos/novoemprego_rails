@@ -1,11 +1,7 @@
-<%= render 'homepage_navbar' %>
-<div class="container">
-  <div class="jumbotron jumbotron-fluid alert-success" role="alert">
-    <h1 class="display-4 center">Bem-vindo ao Novo emprego !</h1>
-    <p class="lead">O melhor site de empregos para candidatos e empresas.</p>
-    </div>
-  </div>
-</div>
+<%= render "home/navbar"%>
+<div class="jumbotron bg-success"><h1>Olá</h1></div>
+<%= current_applicant.inspect%>
 <% if applicant_signed_in? %>
-<h1><%= current_applicant.inspect %></h1>
-<%end%>
+<br/>
+<%= current_applicant.profile.inspect%>
+<% end %>
