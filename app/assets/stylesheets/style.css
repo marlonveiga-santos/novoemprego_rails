@@ -2,3 +2,10 @@ body {
   background-color: rgb(117, 117, 245) !important;
   padding-top: 80px;
 }
+
+.avatar {
+  vertical-align: middle;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}

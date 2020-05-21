@@ -5,13 +5,15 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <%= button_to 'Candidato', new_applicant_session_path, {class: 'nav-link btn btn-outline-primary m-2 p-2'} %>
-      </li>
       <% if applicant_signed_in? %>
       <li class="nav-item">
+        <% if @applicant.profile.avatar.attached? %>
+        <%= image_tag @applicant.profile.avatar, :class => 'avatar' %>
+        <% end %>
+      </li>
+      <li class="nav-item">
         <%= link_to 'Editar Perfil', edit_profile_path(@applicant), :class => 'nav-link btn btn-outline-sucess m-2 p-2' %>
-   </li>
+      </li>
       <li class="nav-item">
            <%= link_to 'Sair', destroy_applicant_session_path, method: :delete, :class => 'nav-link btn btn-outline-danger m-2 p-2' %>
       </li>
