@@ -1,0 +1,23 @@
+<%= render "home/navbar"%>
+
+<h1><%= @profile.preferred_name %></h1>
+
+<%= form_with(model: @profile, local:true) do |f| %>
+  <div class="field">
+    <%= f.label :name, t('.name') %>
+    <%= f.text_field :name, value:  @profile.name %>
+  </div>
+  <div class="field">
+    <%= f.label :preferred_name %>
+    <%= f.text_field :preferred_name, value:  @profile.preferred_name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description, value:  @profile.description %>
+  </div>
+  <div class="field">
+    <%= f.label :birth_date %>
+    <%= f.date_field :birth_date, class: 'form-control', value:  @profile.birth_date %>
+  </div>
+  <%= f.submit 'Enviar' %>
+<% end %>
