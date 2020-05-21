@@ -1,9 +1,16 @@
 class ProfilesController < ApplicationController
   def show
     @applicant = current_applicant
+    @percentage = current_applicant.profile.completeness
+    unless @percentage == '100 %'
+      redirect_to edit_profile_path(@applicant)
+      flash[:alert] = "Perfil incompleto. \n Por favor complete-o."
+    end
   end
 
   def edit
+    @applicant = current_applicant
+    @percentage = current_applicant.profile.completeness
     @profile = current_applicant.profile
   end
 

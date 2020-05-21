@@ -1,16 +1,20 @@
-<%= render "home/navbar"%>
+<%= render "profiles/navbar"%>
 
+<h2>Seu perfil está completo em: <%=@percentage%></h2>
 <h1><%= @profile.preferred_name %></h1>
 
 <%= form_with(model: @profile, local:true) do |f| %>
   <div class="field">
     <%= f.label :name, t('.name') %>
-    <%= f.text_field :name, value:  @profile.name %>
+    <%= f.text_field :name, value:  @profile.name, :id => 'name_id'%>
   </div>
   <div class="field">
     <%= f.label :preferred_name %>
-    <%= f.text_field :preferred_name, value:  @profile.preferred_name %>
+    <%= f.text_field :preferred_name, value: @profile.preferred_name, :id => 'preferred_name_id' %>
+    <a class="btn btn-outline-primary m-1 p-1" onclick="myFunction()">Copy name</a>
+    <p>Copie e cole seu nome se não tiver nome alternativo</p>
   </div>
+  
   <div class="field">
     <%= f.label :description %>
     <%= f.text_field :description, value:  @profile.description %>
@@ -24,4 +28,15 @@
     <%= f.file_field :avatar %>
   </div>
   <%= f.submit 'Enviar' %>
+  <script>
+  function myFunction() {
+    var copyText = document.getElementById("name_id");
+    var pasteText = document.getElementById("preferred_name_id");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    pasteText.focus();
+    pasteText.select();
+  }
+  </script>
 <% end %>

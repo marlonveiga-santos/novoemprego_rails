@@ -1,17 +1,8 @@
 <%= render "profiles/navbar"%>
+
 <div class="jumbotron">
   <h1>Olá Candidato <%= current_applicant.profile.name%></h1>
   <h1>Sua descrição <%= @applicant.profile.description%></h1>
+  <h2>Seu perfil está completo em: <%=@percentage%></h2>
 </div>
-<!-- app/views/posts/show.html.erb -->
-<% if @applicant.profile.avatar.attached? %>
-<!-- @post.image.present? will always return true, use attached? to check presence -->
-  <p>
-    <strong>Image:</strong>
-    <br>
-    <%= image_tag @applicant.profile.avatar, src: 'Image Not Found', 
-    onerror: 'this.error=null;this.src="/assets/images/not_found.png"', :class => 'avatar' %>
-  </p>
-  <%=hello_world('teste')%>
-  <%=alo('teste')%>
-<% end %>
+  <%=@hello%>
