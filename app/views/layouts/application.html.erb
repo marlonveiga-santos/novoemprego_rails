@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <% if applicant_signed_in? %>
+    <%= render "layouts/navbar_signed" %>
+    <%else %>
+    <%= render "layouts/navbar_default" %>
+    <%end%>
     <% flash.each do |key, value| %>
       <div class="<%= flash_class(key) %>">
             <%= value %>
