@@ -1,5 +1,5 @@
 <h2>Seu perfil está completo em: <%=@percentage%></h2>
-<h3><%= current_applicant.profile.all_columns %></h3>
+<h3><%= @applicant.profile.inspect %></h3>
 <h1><%= @profile.preferred_name %></h1>
 
 <%= link_to 'Ver Graduações', educations_path %>
@@ -8,11 +8,23 @@
     <%= f.label :name, t('.name') %>
     <%= f.text_field :name, value:  @profile.name, :id => 'name_id'%>
   </div>
+
   <div class="field">
     <%= f.label :preferred_name %>
     <%= f.text_field :preferred_name, value: @profile.preferred_name, :id => 'preferred_name_id' %>
     <a class="btn btn-outline-primary m-1 p-1" onclick="myFunction()">Copy name</a>
     <p>Copie e cole seu nome se não tiver nome alternativo</p>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %>
+    <div class="field-row">
+      <% @genders.each do |opt| %>
+      <%= f.label opt.humanize %>
+      <%= f.radio_button :gender, opt %>
+      <br/>
+    </div>
+    <% end %>
   </div>
   
   <div class="field">

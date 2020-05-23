@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_23_031111) do
+ActiveRecord::Schema.define(version: 2020_05_23_160707) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_031111) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "applicant_id", null: false
+    t.string "gender"
     t.index ["applicant_id"], name: "index_profiles_on_applicant_id"
   end
 
