@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Graduações</h1>
   <%= link_to 'Criar nova graduação', new_education_path, :class => 'btn btn-success m-2 p-2' %>
-  <%= link_to 'Voltar', educations_path, :class => 'btn btn-light m-2 p-2' %>
+  <%= link_to 'Voltar', profile_path(@applicant), :class => 'btn btn-light m-2 p-2' %>
     <% if @educations.empty? %>
     <h1>Nenhuma graduação cadastrada</h1>
     <% else %>

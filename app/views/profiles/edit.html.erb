@@ -3,6 +3,7 @@
 <h1><%= @profile.preferred_name %></h1>
 
 <%= link_to 'Ver Graduações', educations_path %>
+<%= link_to 'Ver Experiências', professions_path %>
 <%= form_with(model: @profile, local:true) do |f| %>
   <div class="field">
     <%= f.label :name, t('.name') %>

@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
 
   def edit
     @applicant = current_applicant
-    @gender = params[:gender]
+    @genders = genders
     @percentage = current_applicant.profile.completeness
     @profile = current_applicant.profile
   end
@@ -29,7 +29,8 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(:name, :preferred_name, :gender, :description, :birth_date, :avatar, 
-     :educations_attributes => [:institution, :course, :start_date, :end_date, :level])
+     :educations_attributes => [:institution, :course, :start_date, :end_date, :level],
+     :professions_attributes => [:company, :job_role, :start_date, :end_date, :salary, :attributions, :job_area])
   end
 
   def genders
@@ -37,4 +38,5 @@ class ProfilesController < ApplicationController
   end
 
 end
+
 

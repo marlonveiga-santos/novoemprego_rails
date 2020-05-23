@@ -2,6 +2,8 @@ class Profile < ApplicationRecord
   belongs_to :applicant
   has_many :educations
   accepts_nested_attributes_for :educations
+  has_many :professions
+  accepts_nested_attributes_for :professions
   has_one_attached :avatar
 
   def profile_avatar profile
@@ -18,6 +20,9 @@ class Profile < ApplicationRecord
       checker += 1
     end
     unless educations.present?
+      checker += 1
+    end
+    unless professions.present?
       checker += 1
     end
     checker
