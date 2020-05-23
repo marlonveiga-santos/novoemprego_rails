@@ -19,10 +19,10 @@
   <div class="field">
     <%= f.label :end_date %>
     <%= f.date_field :end_date, class: 'form-control' %>
-  </div>
+  </div>  
   <div class="field">
-    <%= f.label :level %>
-    <%= f.number_field :level, class: 'form-control' %>
+    <%= f.label :level, "Tipo" %>
+    <%= f.select :level, options_for_select(@types), :class => "custom-select custom-select-lg mb-3" %>
   </div>
 
   <%= hidden_field_tag :profile_id, @applicant.id %>
