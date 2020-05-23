@@ -1,5 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :applicant
+  has_many :educations
+  accepts_nested_attributes_for :educations
   has_one_attached :avatar
 
   def profile_avatar profile
@@ -13,6 +15,9 @@ class Profile < ApplicationRecord
   def image_verificator
     checker = 0
     unless avatar.present?
+      checker += 1
+    end
+    unless educations.present?
       checker += 1
     end
     checker

@@ -18,7 +18,7 @@ class Applicants::RegistrationsController < Devise::RegistrationsController
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) { |u|
       u.permit(:email, :password, :password_confirmation,
-         :profile_attributes => [:name, :preferred_name, :description, :birth_date])
+         :profile_attributes => [:name, :preferred_name, :description, :birth_date, :education])
     }
   end
 end

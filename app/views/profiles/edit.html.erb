@@ -1,6 +1,8 @@
 <h2>Seu perfil está completo em: <%=@percentage%></h2>
+<h3><%= current_applicant.profile.all_columns %></h3>
 <h1><%= @profile.preferred_name %></h1>
 
+<%= link_to 'Ver Graduações', educations_path %>
 <%= form_with(model: @profile, local:true) do |f| %>
   <div class="field">
     <%= f.label :name, t('.name') %>
