@@ -1,7 +1,7 @@
 class ProfessionsController < ApplicationController
   def index
     @applicant = current_applicant
-    @professions = Profession.all
+    @professions = current_applicant.profile.professions.where(params[:id])
     @types = graduation_types
   end
   
@@ -55,11 +55,14 @@ end
   private
 
   def permitted_params
-    params.require(:profession).permit(:company, :job_role, :start_date, :end_date, :salary, :attributions, :job_area)
+    params.require(:profession).permit(:company, :job_role, :start_date, 
+                                       :end_date, :salary, :attributions, 
+                                       :job_area)
   end
 
   def graduation_types
     {"Informática/T.I." => "0", "Contabilidade" => "1","Recursos Humanos" => "2",
-      "Área da Saúde" => "3", "Terceiro Setor/Voluntariado" => "4", "Prestação de serviços" => "5", "Outro Tipo" => "6"}
+      "Área da Saúde" => "3", "Terceiro Setor/Voluntariado" => "4", 
+      "Prestação de serviços" => "5", "Outro Tipo" => "6"}
   end
 end

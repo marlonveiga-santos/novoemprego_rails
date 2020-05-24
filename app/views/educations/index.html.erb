@@ -1,7 +1,9 @@
 <div class="container">
   <h1>Graduações</h1>
-  <%= link_to 'Criar nova graduação', new_education_path, :class => 'btn btn-success m-2 p-2' %>
-  <%= link_to 'Voltar', profile_path(@applicant), :class => 'btn btn-light m-2 p-2' %>
+  <%= link_to 'Criar nova graduação', new_education_path, 
+  :class => 'btn btn-success m-2 p-2' %>
+  <%= link_to 'Voltar', edit_profile_path(@applicant), 
+  :class => 'btn btn-light m-2 p-2' %>
     <% if @educations.empty? %>
     <h1>Nenhuma graduação cadastrada</h1>
     <% else %>
@@ -15,11 +17,10 @@
         <p class="card-text">Início: <%= m.start_date %></p>
         <p class="card-text">Término: <%= m.end_date %></p>
         <%= link_to "Editar", edit_education_path(m.id),:class => "card-link"%>
-        <%= link_to "Excluir", education_path(m.id),  method: :delete, data: { confirm: 'Confirmar exclusão?' }, :class => "card-link"%>
+        <%= link_to "Excluir", education_path(m.id),  method: :delete, 
+        data: { confirm: 'Confirmar exclusão?' }, :class => "card-link"%>
       </div>
     </div>
       <%end%>
-      
   <% end %>
-  <%= @types.keys[0].inspect%>
 </div>

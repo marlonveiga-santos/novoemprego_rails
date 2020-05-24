@@ -23,10 +23,9 @@
 
   <div class="field">
     <%= f.label :level, "Tipo" %>
-    <%= f.select :level, options_for_select(@types), :class => "custom-select custom-select-lg mb-3" %>
+    <%= f.select :level, options_for_select(@types), 
+    :class => "custom-select custom-select-lg mb-3" %>
   </div>
 
   <%= f.submit 'Enviar' %>
 <% end %>
-<%= @applicant.profile.inspect %>
-<%= @types.inspect %>

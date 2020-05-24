@@ -1,55 +1,74 @@
-<h2>Seu perfil está completo em: <%=@percentage%></h2>
-<h3><%= @applicant.profile.inspect %></h3>
-<h1><%= @profile.preferred_name %></h1>
-
-<%= link_to 'Ver Graduações', educations_path %>
-<%= link_to 'Ver Experiências', professions_path %>
-<%= form_with(model: @profile, local:true) do |f| %>
-  <div class="field">
-    <%= f.label :name, t('.name') %>
-    <%= f.text_field :name, value:  @profile.name, :id => 'name_id'%>
+<h1> Seu perfil está completo em: <%=@percentage%></h1>
+  <div class="list-group list-group-horizontal">
+    <%= link_to 'Ver Graduações', educations_path, 
+      :class => "list-group-item list-group-item-action list-group-item-dark" %>
+    <%= link_to 'Ver Experiências', professions_path, 
+      :class => "list-group-item list-group-item-action list-group-item-dark" %>
+    <%= link_to 'Alterar Email e senha', edit_applicant_registration_path, 
+      :class => "list-group-item list-group-item-action list-group-item-dark" %>
+    <%= link_to 'Alterar Email', edit_applicant_registration_path, 
+      :class => "list-group-item list-group-item-action list-group-item-dark" %>
   </div>
-
-  <div class="field">
-    <%= f.label :preferred_name %>
-    <%= f.text_field :preferred_name, value: @profile.preferred_name, :id => 'preferred_name_id' %>
-    <a class="btn btn-outline-primary m-1 p-1" onclick="myFunction()">Copy name</a>
-    <p>Copie e cole seu nome se não tiver nome alternativo</p>
-  </div>
-
-  <div class="field">
-    <%= f.label :gender %>
-    <div class="field-row">
-      <% @genders.each do |opt| %>
-      <%= f.label opt.humanize %>
-      <%= f.radio_button :gender, opt %>
-      <br/>
-    </div>
-    <% end %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description, value:  @profile.description %>
-  </div>
-  <div class="field">
-    <%= f.label :birth_date %>
-    <%= f.date_field :birth_date, class: 'form-control', value:  @profile.birth_date %>
-  </div>
-  <div class="field">
-    <%= f.label :avatar %>
-    <%= f.file_field :avatar %>
-  </div>
-  <%= f.submit 'Enviar' %>
-  <script>
-  function myFunction() {
-    var copyText = document.getElementById("name_id");
-    var pasteText = document.getElementById("preferred_name_id");
-    copyText.select();
-    copyText.setSelectionRange(0, 99999)
-    document.execCommand("copy");
-    pasteText.focus();
-    pasteText.select();
-  }
-  </script>
-<% end %>
+  <form class="form-group bg-light m-2 p-2">
+    <h2>Editar Perfil</h2>
+    <%= form_with(model: @profile, local:true) do |f| %>
+      <div class="form-group">
+        <%= f.label :name, t('.name') %>
+        <%= f.text_field :name, value:  @profile.name, :id => 'name_id',
+        :class => "form-control", style: "max-width: 40rem"%>
+      </div>
+    
+       <div class="form-group">
+        <%= f.label :preferred_name %>
+        <%= f.text_field :preferred_name, value: @profile.preferred_name, 
+          :id => 'preferred_name_id',
+          :class => "form-control", style: "max-width: 40rem"%>
+        <a class="btn btn-outline-primary m-1 p-1" onclick="myFunction()">Copy name</a>
+        <br/>
+        <small>Copie e cole seu nome se não tiver nome alternativo</small>
+      </div>
+    
+      <div class="form-group">
+        <%= f.label :gender %>
+          <% @genders.each do |opt| %>
+          <div class="form-check">
+            <%= f.radio_button :gender, opt, :class => "form-check-input" %>
+            <%= f.label opt.humanize, opt.humanize, :class => "form-check-label" %>
+          </div>
+        <% end %>
+      </div>
+      
+       <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, value:  @profile.description,
+        :class => "form-control", style: "max-width: 40rem"%>
+      </div>
+       <div class="form-group">
+        <%= f.label :birth_date %>
+        <%= f.date_field :birth_date, class: 'form-control', 
+          value:  @profile.birth_date,
+          :class => "form-control", style: "max-width: 40rem"%>
+      </div>
+       <div class="form-group">
+        <%= f.label :avatar %><br/>
+        <label class="btn btn-default btn-change-avatar">
+          Upload new image
+          <span style="display:none;">
+            <%= f.file_field :avatar, id: "fileUploader"%>
+          </span>
+        </label>
+      </div>
+      <%= f.submit 'Enviar', :class => "btn btn-primary" %>
+      <script>
+      function myFunction() {
+        var copyText = document.getElementById("name_id");
+        var pasteText = document.getElementById("preferred_name_id");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999)
+        document.execCommand("copy");
+        pasteText.focus();
+        pasteText.select();
+      }
+      </script>
+  <% end %>
+  </form>

@@ -1,7 +1,9 @@
 <div class="container">
   <h1>Experiências</h1>
-  <%= link_to 'Criar nova experiência', new_profession_path, :class => 'btn btn-success m-2 p-2' %>
-  <%= link_to 'Voltar', edit_profile_path(@applicant), :class => 'btn btn-light m-2 p-2' %>
+  <%= link_to 'Criar nova experiência', new_profession_path, 
+    :class => 'btn btn-success m-2 p-2' %>
+  <%= link_to 'Voltar', edit_profile_path(@applicant), 
+    :class => 'btn btn-light m-2 p-2' %>
     <% if @professions.empty? %>
     <h1>Nenhuma experiência cadastrada</h1>
     <% else %>
@@ -17,11 +19,10 @@
         <p class="card-text">Término: <%= m.end_date %></p>
         <p class="card-text">Atribuições: <%= m.attributions %></p>
         <%= link_to "Editar", edit_profession_path(m.id),:class => "card-link"%>
-        <%= link_to "Excluir", profession_path(m.id),  method: :delete, data: { confirm: 'Confirmar exclusão?' }, :class => "card-link"%>
+        <%= link_to "Excluir", profession_path(m.id),  method: :delete, 
+          data: { confirm: 'Confirmar exclusão?' }, :class => "card-link"%>
       </div>
     </div>
       <%end%>
-      
   <% end %>
-  <%= @types.keys[0].inspect%>
 </div>

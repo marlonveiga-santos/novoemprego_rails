@@ -28,7 +28,8 @@ class Profile < ApplicationRecord
     checker
   end
 
-  # This will count all fields for your model including default created_at and updated_at model fields
+  # This will count all fields for your model including default 
+  # created_at and updated_at model fields
 def total_columns
   Profile.column_names.count  
 end

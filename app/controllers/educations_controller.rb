@@ -1,13 +1,8 @@
 class EducationsController < ApplicationController
   def index
     @applicant = current_applicant
-    @educations = Education.all
+    @educations = current_applicant.profile.educations.where(params[:id])
     @types = graduation_types
-  end
-  
-  def show
-    @applicant = current_applicant
-    @education = Education.find(params[:id])
   end
 
   def new
@@ -55,7 +50,8 @@ end
   private
 
   def permitted_params
-    params.require(:education).permit(:institution, :course, :start_date, :end_date, :level)
+    params.require(:education).permit(:institution, :course, :start_date, 
+                                      :end_date, :level)
   end
 
   def graduation_types

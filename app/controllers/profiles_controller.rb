@@ -28,13 +28,17 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:name, :preferred_name, :gender, :description, :birth_date, :avatar, 
-     :educations_attributes => [:institution, :course, :start_date, :end_date, :level],
-     :professions_attributes => [:company, :job_role, :start_date, :end_date, :salary, :attributions, :job_area])
+    params.require(:profile).permit(:name, :preferred_name, :gender, :description, 
+                                    :birth_date, :avatar, 
+                                    :educations_attributes => [:institution, 
+                                    :course, :start_date, :end_date, :level],
+                                    :professions_attributes => [:company, 
+                                    :job_role, :start_date, :end_date, :salary, 
+                                    :attributions, :job_area])
   end
 
   def genders
-    %w(Male Female Non-binary Not\ informed )
+    %w(Male Female Non-binary Not\ informed)
   end
 
 end

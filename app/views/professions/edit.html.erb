@@ -31,10 +31,8 @@
 
   <div class="field">
     <%= f.label :salary %>
-    <%= f.number_field :salary, step: 100 %>
+    <%= f.number_field :salary, step: 50, min: 0 %>
   </div>
 
   <%= f.submit 'Enviar' %>
 <% end %>
-<%= @applicant.profile.inspect %>
-<%= @profession.inspect %>
