@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class Applicants::RegistrationsController < Devise::RegistrationsController
+  include Accessible
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters
+  skip_before_action :check_user, except: [:new, :create]
 
   # GET /users/sign_up
   def new
