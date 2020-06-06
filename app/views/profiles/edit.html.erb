@@ -1,26 +1,27 @@
+<% @profile.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>
 <h1> Seu perfil está completo em: <%=@percentage%></h1>
   <div class="list-group list-group-horizontal">
-    <%= link_to 'Ver Graduações', educations_path, 
+    <%= link_to 'Editar Graduações', educations_path, 
       :class => "list-group-item list-group-item-action list-group-item-dark" %>
-    <%= link_to 'Ver Experiências', professions_path, 
+    <%= link_to 'Editar Experiências', professions_path, 
       :class => "list-group-item list-group-item-action list-group-item-dark" %>
     <%= link_to 'Alterar Email e senha', edit_applicant_registration_path, 
       :class => "list-group-item list-group-item-action list-group-item-dark" %>
-    <%= link_to 'Alterar Email', edit_applicant_registration_path, 
-      :class => "list-group-item list-group-item-action list-group-item-dark" %>
   </div>
-  <form class="form-group bg-light m-2 p-2">
+  <div class="form-group bg-light m-2 p-2">
     <h2>Editar Perfil</h2>
-    <%= form_with(model: @profile, local:true) do |f| %>
+    <%= form_for @profile,  method: :patch do |f| %>
       <div class="form-group">
         <%= f.label :name, t('.name') %>
-        <%= f.text_field :name, value:  @profile.name, :id => 'name_id',
+        <%= f.text_field :name, :id => 'name_id',
         :class => "form-control", style: "max-width: 40rem"%>
       </div>
     
        <div class="form-group">
         <%= f.label :preferred_name %>
-        <%= f.text_field :preferred_name, value: @profile.preferred_name, 
+        <%= f.text_field :preferred_name, 
           :id => 'preferred_name_id',
           :class => "form-control", style: "max-width: 40rem"%>
         <a class="btn btn-outline-primary m-1 p-1" onclick="myFunction()">Copy name</a>
@@ -40,13 +41,13 @@
       
        <div class="form-group">
         <%= f.label :description %>
-        <%= f.text_area :description, value:  @profile.description,
+        <%= f.text_area :description, 
         :class => "form-control", style: "max-width: 40rem"%>
       </div>
        <div class="form-group">
         <%= f.label :birth_date %>
         <%= f.date_field :birth_date, class: 'form-control', 
-          value:  @profile.birth_date,
+          
           :class => "form-control", style: "max-width: 40rem"%>
       </div>
        <div class="form-group">
@@ -71,4 +72,5 @@
       }
       </script>
   <% end %>
-  </form>
+    </div>
+  <%= @profile.inspect %>

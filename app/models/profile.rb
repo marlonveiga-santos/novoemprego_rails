@@ -1,8 +1,8 @@
 class Profile < ApplicationRecord
   belongs_to :applicant
-  has_many :educations
+  has_many :educations, dependent: :destroy 
   accepts_nested_attributes_for :educations
-  has_many :professions
+  has_many :professions, dependent: :destroy 
   accepts_nested_attributes_for :professions
   has_one_attached :avatar
 

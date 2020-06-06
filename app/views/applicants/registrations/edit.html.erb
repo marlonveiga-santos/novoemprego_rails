@@ -34,6 +34,34 @@
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
+  <%= f.fields_for :profile_attributes do |ff|%>
+  <div class="field">
+    <%= ff.label :name, t('.name') %>
+    <%= ff.text_field :name %>
+  </div>
+  <div class="field">
+    <%= ff.label :preferred_name %>
+    <%= ff.text_field :preferred_name %>
+  </div>
+  <div class="field">
+    <%= ff.label :description %>
+    <%= ff.text_field :description %>
+  </div>
+  <div class="field">
+    <%= ff.label :birth_date %>
+    <%= ff.date_field :birth_date, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= ff.label :avatar %><br/>
+    <label class="btn btn-default btn-change-avatar">
+      Upload new image
+      <span style="display:none;">
+        <%= ff.file_field :avatar, id: "fileUploader"%>
+      </span>
+    </label>
+  </div>
+  <% end %>
+
 <% end %>
 
 <h3>Cancel my account</h3>

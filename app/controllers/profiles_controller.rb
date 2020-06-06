@@ -12,13 +12,13 @@ class ProfilesController < ApplicationController
     @applicant = current_applicant
     @genders = genders
     @percentage = current_applicant.profile.completeness
-    @profile = current_applicant.profile
+    @profile = Profile.find(params[:id])
   end
 
   def update
-    @profile = current_applicant.profile
-    @profile.update(profile_params)
-    if @profile.save
+    @profile = Applicant.find(params[:id]).profile
+    
+    if @profile.update(profile_params)
      redirect_to @profile
       else
      render :edit
@@ -30,11 +30,8 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(:name, :preferred_name, :gender, :description, 
                                     :birth_date, :avatar, 
-                                    :educations_attributes => [:institution, 
-                                    :course, :start_date, :end_date, :level],
-                                    :professions_attributes => [:company, 
-                                    :job_role, :start_date, :end_date, :salary, 
-                                    :attributions, :job_area])
+                                    :educations_attributes => [],
+                                    :professions_attributes => [])
   end
 
   def genders
