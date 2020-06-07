@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
+  before_action :define_current, only[:show, :edit]
+
   def show
-    @applicant = current_applicant
     @percentage = current_applicant.profile.completeness
     unless @percentage == '100 %'
       redirect_to edit_profile_path(@applicant)
@@ -9,7 +10,6 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @applicant = current_applicant
     @genders = genders
     @percentage = current_applicant.profile.completeness
     @profile = Profile.find(params[:id])
@@ -36,6 +36,10 @@ class ProfilesController < ApplicationController
 
   def genders
     %w(Male Female Non-binary Not\ informed)
+  end
+
+  def define_current
+    @applicant = current_applicant
   end
 
 end

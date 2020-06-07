@@ -1,21 +1,19 @@
 class EducationsController < ApplicationController
+  before_action :define_current
+  
   def index
-    @applicant = current_applicant
     @educations = current_applicant.profile.educations.where(params[:id])
   end
 
   def new
-    @applicant = current_applicant
     @education = Education.new
   end
 
   def edit
-    @applicant = current_applicant
     @education = Education.find(params[:id])
   end
 
   def create
-    @applicant = current_applicant
     @education = @applicant.profile.educations.create(permitted_params)
     if @education.save
       redirect_to educations_path
@@ -26,7 +24,6 @@ class EducationsController < ApplicationController
   end
 
   def update
-    @applicant = current_applicant
     @education = @applicant.profile.educations.find(params[:id])
     @education.update(permitted_params)
     if @education.save
@@ -38,7 +35,6 @@ class EducationsController < ApplicationController
   end
 
   def destroy
-    @applicant = current_applicant
     @education = @applicant.profile.educations.find(params[:id])
     @education.destroy
     redirect_to educations_path
@@ -49,5 +45,9 @@ end
   def permitted_params
     params.require(:education).permit(:institution, :course, :start_date, 
                                       :end_date, :level)
+  end
+
+  def define_current
+    @applicant = current_applicant
   end
 end

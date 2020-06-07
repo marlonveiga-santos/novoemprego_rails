@@ -1,26 +1,23 @@
 class ProfessionsController < ApplicationController
+  before_action :define_current
+  
   def index
-    @applicant = current_applicant
     @professions = current_applicant.profile.professions.where(params[:id])
   end
   
   def show
-    @applicant = current_applicant
     @profession = Profession.find(params[:id])
   end
 
   def new
-    @applicant = current_applicant
     @profession = Profession.new
   end
 
   def edit
-    @applicant = current_applicant
     @profession = Profession.find(params[:id])
   end
 
   def create
-    @applicant = current_applicant
     @profession = @applicant.profile.professions.create(permitted_params)
     if @profession.save
       redirect_to professions_path
@@ -31,7 +28,6 @@ class ProfessionsController < ApplicationController
   end
 
   def update
-    @applicant = current_applicant
     @profession = @applicant.profile.professions.find(params[:id])
     @profession.update(permitted_params)
     if @profession.save
@@ -43,7 +39,6 @@ class ProfessionsController < ApplicationController
   end
 
   def destroy
-    @applicant = current_applicant
     @profession = @applicant.profile.professions.find(params[:id])
     @profession.destroy
     redirect_to professions_path
@@ -55,6 +50,10 @@ end
     params.require(:profession).permit(:company, :job_role, :start_date, 
                                        :end_date, :salary, :attributions, 
                                        :job_area)
+  end
+
+  def define_current
+    @applicant = current_applicant
   end
 
 end
