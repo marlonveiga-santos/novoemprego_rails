@@ -6,6 +6,8 @@ class Profile < ApplicationRecord
   accepts_nested_attributes_for :professions
   has_one_attached :avatar
 
+  enum gender: {male: 0, female: 1, non_binary: 2, uninformed: 3}
+
   def profile_avatar profile
     if profile.avatar.present?
       image_tag profile.image_url :avatar

@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :define_current, only[:show, :edit]
+  before_action :define_current, only: [:show, :edit]
 
   def show
     @percentage = current_applicant.profile.completeness
@@ -10,7 +10,6 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @genders = genders
     @percentage = current_applicant.profile.completeness
     @profile = Profile.find(params[:id])
   end
@@ -32,10 +31,6 @@ class ProfilesController < ApplicationController
                                     :birth_date, :avatar, 
                                     :educations_attributes => [],
                                     :professions_attributes => [])
-  end
-
-  def genders
-    %w(Male Female Non-binary Not\ informed)
   end
 
   def define_current

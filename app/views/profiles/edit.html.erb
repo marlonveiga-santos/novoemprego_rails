@@ -31,7 +31,7 @@
     
       <div class="form-group">
         <%= f.label :gender %>
-          <% @genders.each do |opt| %>
+          <% Profile.genders.keys.each do |opt| %>
           <div class="form-check">
             <%= f.radio_button :gender, opt, :class => "form-check-input" %>
             <%= f.label opt.humanize, opt.humanize, :class => "form-check-label" %>
