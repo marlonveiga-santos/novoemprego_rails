@@ -13,7 +13,7 @@
       <div class="card-body">
         <h5 class="card-title"><%= m.job_role %></h5>
         <h6 class="card-subtitle mb-2 text-muted"> <%= m.company %></h6>
-        <p class="card-text">Área: <%= @types.keys[m.job_area] %></p>
+        <p class="card-text">Área: <%= m.job_area %></p>
         <p class="card-text">Faixa salarial: <%= number_to_currency(m.salary) %></p>
         <p class="card-text">Início: <%= m.start_date %></p>
         <p class="card-text">Término: <%= m.end_date %></p>

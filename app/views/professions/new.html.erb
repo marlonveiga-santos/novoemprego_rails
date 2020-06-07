@@ -14,7 +14,7 @@
   </div>
   <div class="field">
     <%= f.label :job_area, "Tipo" %>
-    <%= f.select :job_area, options_for_select(@types), :class => "custom-select custom-select-lg mb-3" %>
+    <%= f.select :job_area, options_for_select(Education.job_areas.keys), :class => "custom-select custom-select-lg mb-3" %>
   </div>
   <div class="field">
     <%= f.label :start_date %>

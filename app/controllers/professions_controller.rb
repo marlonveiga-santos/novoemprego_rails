@@ -2,7 +2,6 @@ class ProfessionsController < ApplicationController
   def index
     @applicant = current_applicant
     @professions = current_applicant.profile.professions.where(params[:id])
-    @types = graduation_types
   end
   
   def show
@@ -12,14 +11,12 @@ class ProfessionsController < ApplicationController
 
   def new
     @applicant = current_applicant
-    @types = graduation_types
     @profession = Profession.new
   end
 
   def edit
     @applicant = current_applicant
     @profession = Profession.find(params[:id])
-    @types = graduation_types
   end
 
   def create
@@ -60,9 +57,4 @@ end
                                        :job_area)
   end
 
-  def graduation_types
-    {"Informática/T.I." => "0", "Contabilidade" => "1","Recursos Humanos" => "2",
-      "Área da Saúde" => "3", "Terceiro Setor/Voluntariado" => "4", 
-      "Prestação de serviços" => "5", "Outro Tipo" => "6"}
-  end
 end
