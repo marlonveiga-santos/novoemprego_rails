@@ -2,19 +2,16 @@ class EducationsController < ApplicationController
   def index
     @applicant = current_applicant
     @educations = current_applicant.profile.educations.where(params[:id])
-    @types = graduation_types
   end
 
   def new
     @applicant = current_applicant
-    @types = graduation_types
     @education = Education.new
   end
 
   def edit
     @applicant = current_applicant
     @education = Education.find(params[:id])
-    @types = graduation_types
   end
 
   def create
@@ -52,10 +49,5 @@ end
   def permitted_params
     params.require(:education).permit(:institution, :course, :start_date, 
                                       :end_date, :level)
-  end
-
-  def graduation_types
-    {"Sem instrução" => "0", "Ensino Fundamental" => "1","Ensino Médio" => "2",
-      "Ensino Superior" => "3", "Curso Técnico" => "4", "Outro Tipo" => "5"}
   end
 end

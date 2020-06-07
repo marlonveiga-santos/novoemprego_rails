@@ -13,7 +13,7 @@
       <div class="card-body">
         <h5 class="card-title"><%= m.course %></h5>
         <h6 class="card-subtitle mb-2 text-muted"> <%= m.institution %></h6>
-        <p class="card-text">Nível: <%= @types.keys[m.level] %></p>
+        <p class="card-text">Nível: <%= m.level %></p>
         <p class="card-text">Início: <%= m.start_date %></p>
         <p class="card-text">Término: <%= m.end_date %></p>
         <%= link_to "Editar", edit_education_path(m.id),:class => "card-link"%>

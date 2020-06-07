@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= f.label :level, "Tipo" %>
-    <%= f.select :level, options_for_select(@types), 
+    <%= f.select :level, options_for_select(Education.levels.keys), 
     :class => "custom-select custom-select-lg mb-3" %>
   </div>
 
