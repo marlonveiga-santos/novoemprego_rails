@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_action :define_current, only: [:show, :edit]
 
   def show
-    @percentage = current_applicant.profile.completeness
+    @percentage = @applicant.profile.completeness
     unless @percentage == '100 %'
       redirect_to edit_profile_path(@applicant)
       flash[:alert] = "Perfil incompleto. \n Por favor complete-o."

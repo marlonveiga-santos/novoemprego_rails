@@ -1,64 +1,17 @@
 require  'rails_helper'
 
 feature 'Applicant authentication' do
-  context 'log in' do
-    scenario 'successfully' do
-      applicant = create(:applicant)
-
-      visit root_path
-      click_on 'Candidato'
-
-      fill_in 'Email', with: applicant.email
-      fill_in 'Senha', with: applicant.password
-      within 'form' do
-        click_on 'Entrar'
-      end
-
-      expect(page).to have_content('Login efetuado com sucesso')
-      expect(page).not_to have_link('Entrar')
-      expect(page).to have_link('Sair')
-      expect(current_path).to eq(root_path)
-    end
-
-    scenario 'and must fill all fields' do
-      applicant = create(:applicant)
-
-      visit root_path
-      click_on 'Candidato'
-
-      within 'form' do
-        click_on 'Entrar'
-      end
-
-      expect(page).to have_content('Email ou senha inválida.')
-      expect(page).to have_button('Entrar')
-      expect(page).not_to have_link('Sair')
-    end
-  end
-
-  context 'log out' do
-    scenario 'successfully' do
-      applicant = create(:applicant)
-
-      visit root_path
-      click_on 'Candidato'
-
-      fill_in 'Email', with: applicant.email
-      fill_in 'Senha', with: applicant.password
-      within 'form' do
-        click_on 'Entrar'
-      end
-      click_on 'Sair'
-
-      expect(page).to have_content('Saiu com sucesso.')
-      expect(page).to have_button('Candidato')
-      expect(page).not_to have_button('Sair')
-      expect(current_path).to eq(root_path)
-    end
-  end
-
   context 'sign up' do
-    scenario 'successfully' do
+    scenario 'and access sign up form' do
+      visit root_path
+      click_on 'Candidato'
+      click_on 'Cadastre-se'
+
+      expect(page).to have_content('Cadastre-se')
+      expect(page).to have_button('Cadastre-se')
+    end
+
+    scenario 'and successfully fill sign up form' do
       visit root_path
       click_on 'Candidato'
       click_on 'Cadastre-se'
@@ -70,9 +23,9 @@ feature 'Applicant authentication' do
         click_on 'Cadastre-se'
       end
 
-      expect(page).to have_content('Login efetuado com sucesso.')
-      expect(page).to have_link('Sair')
-      expect(page).not_to have_link('Entrar')
+      expect(page).to have_content('Perfil incompleto. Por favor complete-o.')
+      expect(page).to have_content('Seu perfil está completo em: 33 %')
+      expect(page).to have_button('Enviar')
     end
 
     scenario 'but email is already used' do
@@ -108,6 +61,21 @@ feature 'Applicant authentication' do
       expect(page).to have_content('Senha é muito curta (mínimo: 6 caracteres)')
       expect(page).to have_link('Entrar')
       expect(page).not_to have_link('Sair')
+    end
+  end
+
+  context 'sign in' do
+    scenario 'and successfully sign-in' do
+      applicant = create(:applicant)
+      visit root_path
+      click_on 'Candidato'
+      fill_in 'Email', with: applicant.email
+      fill_in 'Senha', with: applicant.password
+      click_on 'Entrar'
+
+      expect(page).to have_content('Perfil incompleto. Por favor complete-o.')
+      expect(page).to have_content('Seu perfil está completo em: 66 %')
+      expect(page).to have_button('Enviar')
     end
   end
 end
