@@ -1,24 +1,11 @@
-# README
+<div align="center">
+  <a href="https://rubyonrails.org">
+    <img src="https://avatars.githubusercontent.com/u/4223" width="230">
+  </a>
+</div>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Novoemprego
 
-Things you may want to cover:
+## Site criado em rails, com o uso de tdd para assegurar seu funcionamento.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+_Em construção..._
