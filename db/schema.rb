@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_191234) do
+ActiveRecord::Schema.define(version: 2020_06_22_230045) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -95,8 +95,22 @@ ActiveRecord::Schema.define(version: 2020_06_07_191234) do
     t.index ["applicant_id"], name: "index_profiles_on_applicant_id"
   end
 
+  create_table "workspaces", force: :cascade do |t|
+    t.string "name"
+    t.string "preferred_name"
+    t.integer "gender"
+    t.text "about"
+    t.date "birth_date"
+    t.string "cpf"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "headhunter_id", null: false
+    t.index ["headhunter_id"], name: "index_workspaces_on_headhunter_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "educations", "profiles"
   add_foreign_key "professions", "profiles"
   add_foreign_key "profiles", "applicants"
+  add_foreign_key "workspaces", "headhunters"
 end
