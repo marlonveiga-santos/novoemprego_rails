@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#">Novoemprego</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" 
+     data-target="#navbarCollapse" aria-controls="navbarCollapse" 
+     aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav ml-auto">
+      <% if headhunter_signed_in? %>
+      <li class="nav-item">
+        <%= link_to 'Editar Perfil', edit_workspace_path(@headhunter), 
+        :class => 'nav-link btn btn-outline-sucess m-2 p-2' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Home', headhunter_root_path, 
+          {class: 'nav-link btn btn-outline-primary m-2 p-2'} %>
+      </li>
+      <li class="nav-item">
+           <%= link_to 'Sair', destroy_headhunter_session_path, method: :delete, 
+           :class => 'nav-link btn btn-outline-danger m-2 p-2' %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

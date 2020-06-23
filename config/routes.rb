@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   authenticated :headhunter do 
     root "workspaces#show", :as => :headhunter_root
   end
-  #resources :workspaces, only: [:show, :edit, :update]
+  resources :workspaces, only: [:show, :edit, :update]
   
   #get '/applicants' => "profiles#show", :as => :applicant_root
   root "home#index"
