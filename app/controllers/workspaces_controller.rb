@@ -2,6 +2,10 @@ class WorkspacesController  < ApplicationController
   before_action :define_current, only: [:show, :edit]
 
   def show 
+    @domain = @headhunter.email.split("@").last
+    @comp = Company.where("domain like ?", "%#{@domain}%").take
+    @checker = @comp.nil?
+    
   end
 
   private

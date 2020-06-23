@@ -1,3 +1,12 @@
 <h1>Edit Head Hunter</h1>
 
 <%= @headhunter.inspect %>
+<br>
+<%= @domain %>
+<br>
+<% if @checker == false %>
+  <h3> <%= @comp.name %> </h3> 
+<% else %>
+  <h3>Empresa não localizada</h3>
+ <% end %>
+<br>
