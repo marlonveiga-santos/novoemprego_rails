@@ -9,7 +9,7 @@ module Accessible
     if current_headhunter
       flash.clear
       # if you have rails_admin. You can redirect anywhere really
-      redirect_to(rails_headhunter.dashboard_path) and return
+      redirect_to(headhunter_root_path) and return
     elsif current_applicant
       flash.clear
       # The authenticated root path can be defined in your routes.rb in: devise_scope :user do...
