@@ -1,0 +1,25 @@
+<% @company.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+<% end %>
+
+<%= form_for @company, local:true do |f| %>
+  <div class="companies/field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+    <div class="field">
+    <%= f.label :domain %>
+    <%= f.text_field :domain, value: @domain, :readonly => true %>
+  </div>
+    </div>
+    <div class="field">
+    <%= f.label :cnpj %>
+    <%= f.text_field :cnpj %>
+  </div>
+
+  <%= f.submit 'Enviar' %>
+<% end %>

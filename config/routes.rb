@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   #get '/applicants' => "profiles#show", :as => :applicant_root
   root "home#index"
 
-  resources :companies, only: [:new]
+  resources :companies, only: [:new, :create]
 end
