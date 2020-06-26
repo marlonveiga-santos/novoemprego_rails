@@ -9,18 +9,18 @@ class EducationsController < ApplicationController
     @education = Education.new
   end
 
-  def edit
-    @education = Education.find(params[:id])
-  end
-
   def create
     @education = @applicant.profile.educations.create(permitted_params)
     if @education.save
       redirect_to educations_path
-      else
-        flash[:alert] = "Ocorreu um erro."
-        render :new
-      end
+    else
+      flash[:alert] = "Ocorreu um erro."
+      render :new
+    end
+  end
+  
+  def edit
+    @education = Education.find(params[:id])
   end
 
   def update

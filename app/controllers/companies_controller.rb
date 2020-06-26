@@ -7,8 +7,10 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
+
     if @company.save
       flash[:notice] = "Tudo certo."
+      current_headhunter.update(:company_id => @company.id)
       redirect_to headhunter_root_path
     else
       flash[:alert] = "Ocorreu um erro."

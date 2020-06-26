@@ -7,7 +7,10 @@ class WorkspacesController  < ApplicationController
     @comp = Company.where("domain like ?", "%#{@domain}%").take
     if @comp.nil?
       redirect_to new_company_path
+    else
+      current_headhunter.update(:company_id => @comp.id)
     end
+
   end
 
   def edit
