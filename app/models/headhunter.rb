@@ -5,5 +5,6 @@ class Headhunter < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :company, optional: true
   has_one :workspace, dependent: :destroy, autosave: true 
-  accepts_nested_attributes_for :workspace         
+  accepts_nested_attributes_for :workspace    
+  has_many :jobs     
 end

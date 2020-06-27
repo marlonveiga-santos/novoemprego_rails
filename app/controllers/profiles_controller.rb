@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :define_current, only: [:show, :edit]
+  before_action :jobs_list, only: [:show]
 
   def show
     @percentage = @applicant.profile.completeness
@@ -35,6 +36,10 @@ class ProfilesController < ApplicationController
 
   def define_current
     @applicant = current_applicant
+  end
+
+  def jobs_list 
+    @jobs = Job.all
   end
 
 end

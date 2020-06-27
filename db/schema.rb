@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_213640) do
+ActiveRecord::Schema.define(version: 2020_06_26_211822) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -79,6 +79,21 @@ ActiveRecord::Schema.define(version: 2020_06_25_213640) do
     t.index ["reset_password_token"], name: "index_headhunters_on_reset_password_token", unique: true
   end
 
+  create_table "jobs", force: :cascade do |t|
+    t.integer "headhunter_id", null: false
+    t.string "title"
+    t.text "description"
+    t.text "habilities"
+    t.string "salary"
+    t.integer "level"
+    t.date "end_date"
+    t.string "address"
+    t.text "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["headhunter_id"], name: "index_jobs_on_headhunter_id"
+  end
+
   create_table "professions", force: :cascade do |t|
     t.string "company"
     t.string "job_role"
@@ -120,6 +135,7 @@ ActiveRecord::Schema.define(version: 2020_06_25_213640) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "educations", "profiles"
+  add_foreign_key "jobs", "headhunters"
   add_foreign_key "professions", "profiles"
   add_foreign_key "profiles", "applicants"
   add_foreign_key "workspaces", "headhunters"

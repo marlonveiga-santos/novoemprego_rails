@@ -1,8 +1,11 @@
 class WorkspacesController  < ApplicationController
-  before_action :define_current, only: [:show, :edit]
+  before_action :define_current, only: [:index, :show, :edit]
+
+  def index 
+    @jobs = Job.where(headhunter_id: @headhunter.id)
+  end
 
   def show 
-    @work = Workspace.all
     @domain = @headhunter.email.split("@").last
     @comp = Company.where("domain like ?", "%#{@domain}%").take
     if @comp.nil?
