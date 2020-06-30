@@ -66,16 +66,17 @@ feature 'Applicant authentication' do
 
   context 'sign in' do
     scenario 'and successfully sign-in' do
-      applicant = create(:applicant)
+      applicant = create(:applicant, :with_complete_profile)
       visit root_path
       click_on 'Candidato'
       fill_in 'Email', with: applicant.email
       fill_in 'Senha', with: applicant.password
       click_on 'Entrar'
 
-      expect(page).to have_content('Perfil incompleto. Por favor complete-o.')
-      expect(page).to have_content('Seu perfil está completo em: 66 %')
-      expect(page).to have_button('Enviar')
+      #expect(page).to have_content('Perfil incompleto. Por favor complete-o.')
+      #expect(page).to have_content('Seu perfil está completo em: 72 %')
+      #expect(page).to have_button('Enviar')
+      expect(page).to have_content('Olá Candidato')
     end
   end
 end

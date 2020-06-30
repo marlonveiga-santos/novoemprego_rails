@@ -4,7 +4,6 @@ FactoryBot.define do
       password { '12345678' }
       after :create do |applicant|
         create :profile, applicant: applicant     # has_one
-      end
-      
+      end  
   end
 end
