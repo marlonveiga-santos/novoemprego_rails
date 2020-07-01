@@ -11,14 +11,6 @@ FactoryBot.define do
     after :create do |profile|
       create :education, profile: profile     # has_one
       create :profession, profile: profile     # has_one
-    end 
-
-    trait :with_education do
-      transient do
-        associated_education Education.last
-      end
-
-      education { associated_education }
     end
   end
 end
