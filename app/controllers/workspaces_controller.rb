@@ -24,7 +24,7 @@ class WorkspacesController  < ApplicationController
 
   def workspace_params
     params.require(:workspace).permit(:name, :preferred_name, :gender, 
-                                     :about, :birth_date, :cpf)
+                                     :about, :avatar, :birth_date, :cpf)
   end
 
   def define_current

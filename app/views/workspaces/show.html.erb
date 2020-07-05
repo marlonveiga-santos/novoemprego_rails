@@ -6,6 +6,11 @@
 <br>
 <h3> <%= @comp.name %> </h3> 
 <br>
+<% if @headhunter.workspace.avatar.attached? %>
+<%= image_tag @headhunter.workspace.avatar, :class => 'headhunter-avatar' %>
+<% else %>
+<%= image_tag (asset_path('not_found.png')), :class => 'headhunter-avatar' %>
+<% end %>
 <br>
 <%= @headhunter.workspace.inspect %>
 <br>
